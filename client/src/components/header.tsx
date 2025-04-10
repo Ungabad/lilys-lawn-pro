@@ -1,12 +1,38 @@
-import { useState } from "react";
-import { Link } from "wouter";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "wouter";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [location, setLocation] = useLocation();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
+
+  // Check if user is authenticated
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const res = await fetch("/api/user");
+        if (res.ok) {
+          const user = await res.json();
+          setIsAuthenticated(true);
+          setIsAdmin(user.isAdmin || false);
+        } else {
+          setIsAuthenticated(false);
+          setIsAdmin(false);
+        }
+      } catch (error) {
+        console.error("Authentication check failed:", error);
+        setIsAuthenticated(false);
+        setIsAdmin(false);
+      }
+    };
+
+    checkAuth();
+  }, [location]); // Re-check when location changes
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
@@ -42,7 +68,7 @@ export default function Header() {
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6 items-center">
+          <nav className="hidden md:flex space-x-4 items-center">
             <a
               href="#home"
               className="font-medium hover:text-primary transition duration-200"
@@ -73,6 +99,24 @@ export default function Header() {
             >
               Contact
             </a>
+            
+            {/* Admin button or login link */}
+            {isAuthenticated && isAdmin ? (
+              <Link to="/admin">
+                <a className="font-medium text-secondary hover:text-primary transition duration-200 border-l pl-4 ml-2">
+                  <i className="fas fa-user-shield mr-1"></i>
+                  Dashboard
+                </a>
+              </Link>
+            ) : (
+              <Link to="/auth">
+                <a className="font-medium text-secondary hover:text-primary transition duration-200 border-l pl-4 ml-2">
+                  <i className="fas fa-user-lock mr-1"></i>
+                  Admin Login
+                </a>
+              </Link>
+            )}
+            
             <a
               href="tel:+15095559876"
               className="bg-primary text-white px-4 py-2 rounded-md font-medium hover:bg-opacity-90 transition duration-200"
@@ -120,6 +164,30 @@ export default function Header() {
             >
               Contact
             </a>
+            
+            {/* Admin button or login link - mobile */}
+            {isAuthenticated && isAdmin ? (
+              <Link to="/admin">
+                <a 
+                  className="font-medium text-secondary hover:text-primary transition duration-200 border-t border-gray-200 pt-2 mt-1"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <i className="fas fa-user-shield mr-1"></i>
+                  Dashboard
+                </a>
+              </Link>
+            ) : (
+              <Link to="/auth">
+                <a 
+                  className="font-medium text-secondary hover:text-primary transition duration-200 border-t border-gray-200 pt-2 mt-1"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <i className="fas fa-user-lock mr-1"></i>
+                  Admin Login
+                </a>
+              </Link>
+            )}
+            
             <a
               href="tel:+15095559876"
               className="bg-primary text-white px-4 py-2 rounded-md font-medium hover:bg-opacity-90 transition duration-200 inline-block text-center"

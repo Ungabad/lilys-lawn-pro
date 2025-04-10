@@ -7,6 +7,7 @@ import {
   updateAppointmentSchema,
   insertPaymentSchema
 } from "@shared/schema";
+import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
 import { setupAuth } from "./auth";
 
@@ -49,7 +50,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     } catch (error) {
       // Handle validation errors
-      if (error instanceof Error) {
+      if (error instanceof ZodError) {
         const validationError = fromZodError(error);
         res.status(400).json({ 
           success: false, 
@@ -58,7 +59,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       } else {
         res.status(500).json({ 
           success: false, 
-          message: "An unexpected error occurred" 
+          message: error instanceof Error ? error.message : "An unexpected error occurred" 
         });
       }
     }
@@ -73,11 +74,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const appointment = await storage.createAppointment(validatedData);
       res.status(201).json({ success: true, data: appointment });
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof ZodError) {
         const validationError = fromZodError(error);
         res.status(400).json({ success: false, message: validationError.message });
       } else {
-        res.status(500).json({ success: false, message: "Failed to create appointment" });
+        res.status(500).json({ success: false, message: error instanceof Error ? error.message : "Failed to create appointment" });
       }
     }
   });
@@ -88,7 +89,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const appointments = await storage.getAppointments();
       res.status(200).json({ success: true, data: appointments });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Failed to retrieve appointments" });
+      res.status(500).json({ success: false, message: error instanceof Error ? error.message : "Failed to retrieve appointments" });
     }
   });
 
@@ -107,7 +108,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       res.status(200).json({ success: true, data: appointment });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Failed to retrieve appointment" });
+      res.status(500).json({ success: false, message: error instanceof Error ? error.message : "Failed to retrieve appointment" });
     }
   });
 
@@ -119,7 +120,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const messages = await storage.getContactMessages();
       res.status(200).json({ success: true, data: messages });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Failed to retrieve contact messages" });
+      res.status(500).json({ success: false, message: error instanceof Error ? error.message : "Failed to retrieve contact messages" });
     }
   });
 
@@ -140,11 +141,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       res.status(200).json({ success: true, data: updatedAppointment });
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof ZodError) {
         const validationError = fromZodError(error);
         res.status(400).json({ success: false, message: validationError.message });
       } else {
-        res.status(500).json({ success: false, message: "Failed to update appointment" });
+        res.status(500).json({ success: false, message: error instanceof Error ? error.message : "Failed to update appointment" });
       }
     }
   });
@@ -167,11 +168,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       res.status(201).json({ success: true, data: payment });
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof ZodError) {
         const validationError = fromZodError(error);
         res.status(400).json({ success: false, message: validationError.message });
       } else {
-        res.status(500).json({ success: false, message: "Failed to process payment" });
+        res.status(500).json({ success: false, message: error instanceof Error ? error.message : "Failed to process payment" });
       }
     }
   });
@@ -187,7 +188,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const payments = await storage.getPaymentsByAppointment(id);
       res.status(200).json({ success: true, data: payments });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Failed to retrieve payments" });
+      res.status(500).json({ success: false, message: error instanceof Error ? error.message : "Failed to retrieve payments" });
     }
   });
 
@@ -206,7 +207,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Failed to initialize payment" });
+      res.status(500).json({ success: false, message: error instanceof Error ? error.message : "Failed to initialize payment" });
     }
   });
 
@@ -247,7 +248,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       res.status(500).json({ 
         success: false, 
-        message: "Failed to process payment" 
+        message: error instanceof Error ? error.message : "Failed to process payment" 
       });
     }
   });
