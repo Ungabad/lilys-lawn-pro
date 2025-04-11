@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const lawnServices = [
   {
     icon: "fas fa-cut",
     title: "Lawn Mowing",
-    description: "Professional lawn mowing services with precise edging and trimming for a manicured look.",
+    description:
+      "Professional lawn mowing services with precise edging and trimming for a manicured look.",
     features: [
       "Weekly or bi-weekly schedules",
       "Precise edging and trimming",
@@ -14,7 +15,8 @@ const lawnServices = [
   {
     icon: "fas fa-seedling",
     title: "Lawn Fertilization",
-    description: "Custom fertilization programs to keep your lawn lush, green, and healthy all season long.",
+    description:
+      "Custom fertilization programs to keep your lawn lush, green, and healthy all season long.",
     features: [
       "Custom fertilization programs",
       "Weed control treatments",
@@ -24,17 +26,15 @@ const lawnServices = [
   {
     icon: "fas fa-leaf",
     title: "Spring/Fall Cleanup",
-    description: "Comprehensive seasonal cleanup services to prepare your lawn for the growing or dormant season.",
-    features: [
-      "Leaf removal",
-      "Debris clearing",
-      "Bed maintenance",
-    ],
+    description:
+      "Comprehensive seasonal cleanup services to prepare your lawn for the growing or dormant season.",
+    features: ["Leaf removal", "Debris clearing", "Bed maintenance"],
   },
   {
     icon: "fas fa-water",
     title: "Irrigation Services",
-    description: "Professional irrigation system installation, maintenance, and repair to keep your lawn properly watered.",
+    description:
+      "Professional irrigation system installation, maintenance, and repair to keep your lawn properly watered.",
     features: [
       "System installation",
       "Seasonal maintenance",
@@ -44,7 +44,8 @@ const lawnServices = [
   {
     icon: "fas fa-tree",
     title: "Landscaping",
-    description: "Transform your outdoor space with our professional landscaping design and installation services.",
+    description:
+      "Transform your outdoor space with our professional landscaping design and installation services.",
     features: [
       "Landscape design",
       "Plant installation",
@@ -54,12 +55,9 @@ const lawnServices = [
   {
     icon: "fas fa-fill-drip",
     title: "Aeration & Overseeding",
-    description: "Promote healthy root growth and thicker grass with our aeration and overseeding services.",
-    features: [
-      "Core aeration",
-      "Premium grass seed",
-      "Improved soil health",
-    ],
+    description:
+      "Promote healthy root growth and thicker grass with our aeration and overseeding services.",
+    features: ["Core aeration", "Premium grass seed", "Improved soil health"],
   },
 ];
 
@@ -67,7 +65,8 @@ const snowServices = [
   {
     icon: "fas fa-snowplow",
     title: "Snow Plowing",
-    description: "Professional snow plowing for driveways, parking lots, and roadways to keep them clear and accessible.",
+    description:
+      "Professional snow plowing for driveways, parking lots, and roadways to keep them clear and accessible.",
     features: [
       "Residential driveways",
       "Commercial parking lots",
@@ -77,7 +76,8 @@ const snowServices = [
   {
     icon: "fas fa-icicles",
     title: "Ice Management",
-    description: "Prevent slips and falls with our professional ice management and de-icing services.",
+    description:
+      "Prevent slips and falls with our professional ice management and de-icing services.",
     features: [
       "Ice melt application",
       "Pre-storm treatments",
@@ -87,7 +87,8 @@ const snowServices = [
   {
     icon: "fas fa-snowflake",
     title: "Seasonal Contracts",
-    description: "Secure reliable snow removal for the entire season with our seasonal contract options.",
+    description:
+      "Secure reliable snow removal for the entire season with our seasonal contract options.",
     features: [
       "Priority service",
       "Consistent pricing",
@@ -97,7 +98,8 @@ const snowServices = [
   {
     icon: "fas fa-hand-sparkles",
     title: "Hand Shoveling",
-    description: "Detailed snow removal for walkways, steps, and tight spaces that require manual clearing.",
+    description:
+      "Detailed snow removal for walkways, steps, and tight spaces that require manual clearing.",
     features: [
       "Walkways and sidewalks",
       "Steps and porches",
@@ -107,7 +109,8 @@ const snowServices = [
   {
     icon: "fas fa-building",
     title: "Commercial Services",
-    description: "Comprehensive snow removal solutions for businesses, ensuring safe access for employees and customers.",
+    description:
+      "Comprehensive snow removal solutions for businesses, ensuring safe access for employees and customers.",
     features: [
       "Parking lot clearing",
       "Entrance and exit maintenance",
@@ -117,7 +120,8 @@ const snowServices = [
   {
     icon: "fas fa-home",
     title: "Residential Snow Removal",
-    description: "Keep your home accessible and safe during winter months with our residential snow removal services.",
+    description:
+      "Keep your home accessible and safe during winter months with our residential snow removal services.",
     features: [
       "Driveway clearing",
       "Walkway shoveling",
@@ -130,39 +134,52 @@ export default function ServicesSection() {
   const [showSnow, setShowSnow] = useState(false);
 
   return (
-    <section id="services" className="py-16 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h3 className="text-3xl font-heading font-bold text-primary mb-4">
+    <section id='services' className='py-16 bg-[#707c72]'>
+      <div className='container mx-auto px-4 md:px-6'>
+        <div className='text-center mb-12'>
+          <h3 className='text-3xl font-heading font-bold text-primary mb-4'>
             Our Services
           </h3>
-          <p className="max-w-2xl mx-auto text-dark">
+          <p className='max-w-2xl mx-auto text-dark'>
             We offer comprehensive lawn care and snow removal services to keep
             your property looking its best throughout every season.
           </p>
 
           {/* Service Toggle */}
-          <div className="flex justify-center mt-8">
-            <div className="relative inline-block w-64">
+          <div className='flex justify-center mt-8'>
+            <div className='relative inline-block w-64'>
               <input
-                type="checkbox"
-                id="service-toggle"
-                className="absolute opacity-0 w-0 h-0"
+                type='checkbox'
+                id='service-toggle'
+                className='absolute opacity-0 w-0 h-0'
                 checked={showSnow}
                 onChange={() => setShowSnow(!showSnow)}
               />
-              <label
-                htmlFor="service-toggle"
-                className="flex cursor-pointer"
-              >
-                <span className={`flex-1 py-2 text-center font-medium ${showSnow ? 'text-gray-500' : 'text-primary'}`}>
+              <label htmlFor='service-toggle' className='flex cursor-pointer'>
+                <span
+                  className={`flex-1 py-2 text-center font-medium ${
+                    showSnow ? "text-primary" : "text-green-500"
+                  }`}
+                >
                   Lawn Services
                 </span>
-                <div className="relative mx-2">
-                  <div className={`w-14 h-7 rounded-full transition-colors duration-200 ease-in-out ${showSnow ? 'bg-primary' : 'bg-secondary'}`}></div>
-                  <div className={`absolute left-1 top-1 bg-white w-5 h-5 rounded-full transition-transform duration-200 ease-in-out ${showSnow ? 'transform translate-x-7' : ''}`}></div>
+                <div className='relative mx-2'>
+                  <div
+                    className={`w-14 h-7 rounded-full transition-colors duration-200 ease-in-out ${
+                      showSnow ? "bg-primary" : "bg-secondary"
+                    }`}
+                  ></div>
+                  <div
+                    className={`absolute left-1 top-1 bg-black w-5 h-5 rounded-full transition-transform duration-200 ease-in-out ${
+                      showSnow ? "transform translate-x-7" : ""
+                    }`}
+                  ></div>
                 </div>
-                <span className={`flex-1 py-2 text-center font-medium ${showSnow ? 'text-primary' : 'text-gray-500'}`}>
+                <span
+                  className={`flex-1 py-2 text-center font-medium ${
+                    showSnow ? "text-green-500" : "text-primary"
+                  }`}
+                >
                   Snow Services
                 </span>
               </label>
@@ -179,17 +196,22 @@ export default function ServicesSection() {
           {lawnServices.map((service, index) => (
             <div
               key={`lawn-${index}`}
-              className="bg-light rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200"
+              className='bg-light rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200'
             >
-              <div className="w-16 h-16 bg-secondary bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+              <div className='w-16 h-16 bg-secondary bg-opacity-20 rounded-full flex items-center justify-center mb-4'>
                 <i className={`${service.icon} text-primary text-2xl`}></i>
               </div>
-              <h4 className="text-xl font-heading font-bold mb-2">{service.title}</h4>
-              <p className="text-dark mb-4">{service.description}</p>
-              <ul className="text-sm space-y-1 mb-4">
+              <h4 className='text-xl font-heading font-bold mb-2'>
+                {service.title}
+              </h4>
+              <p className='text-dark mb-4'>{service.description}</p>
+              <ul className='text-sm space-y-1 mb-4'>
                 {service.features.map((feature, featureIndex) => (
-                  <li key={`lawn-feature-${index}-${featureIndex}`} className="flex items-start">
-                    <i className="fas fa-check text-secondary mt-1 mr-2"></i>
+                  <li
+                    key={`lawn-feature-${index}-${featureIndex}`}
+                    className='flex items-start'
+                  >
+                    <i className='fas fa-check text-secondary mt-1 mr-2'></i>
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -207,17 +229,22 @@ export default function ServicesSection() {
           {snowServices.map((service, index) => (
             <div
               key={`snow-${index}`}
-              className="bg-light rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200"
+              className='bg-light rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200'
             >
-              <div className="w-16 h-16 bg-secondary bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+              <div className='w-16 h-16 bg-secondary bg-opacity-20 rounded-full flex items-center justify-center mb-4'>
                 <i className={`${service.icon} text-primary text-2xl`}></i>
               </div>
-              <h4 className="text-xl font-heading font-bold mb-2">{service.title}</h4>
-              <p className="text-dark mb-4">{service.description}</p>
-              <ul className="text-sm space-y-1 mb-4">
+              <h4 className='text-xl font-heading font-bold mb-2'>
+                {service.title}
+              </h4>
+              <p className='text-dark mb-4'>{service.description}</p>
+              <ul className='text-sm space-y-1 mb-4'>
                 {service.features.map((feature, featureIndex) => (
-                  <li key={`snow-feature-${index}-${featureIndex}`} className="flex items-start">
-                    <i className="fas fa-check text-secondary mt-1 mr-2"></i>
+                  <li
+                    key={`snow-feature-${index}-${featureIndex}`}
+                    className='flex items-start'
+                  >
+                    <i className='fas fa-check text-secondary mt-1 mr-2'></i>
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -226,10 +253,10 @@ export default function ServicesSection() {
           ))}
         </div>
 
-        <div className="text-center mt-10">
+        <div className='text-center mt-10'>
           <a
-            href="#contact"
-            className="inline-block bg-primary text-white px-6 py-3 rounded-md font-medium hover:bg-opacity-90 transition duration-200"
+            href='#contact'
+            className='inline-block bg-primary text-white px-6 py-3 rounded-md font-medium hover:bg-opacity-90 transition duration-200'
           >
             Request a Service Quote
           </a>
