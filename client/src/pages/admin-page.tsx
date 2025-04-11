@@ -482,33 +482,104 @@ export default function AdminPage() {
 
           {/* Payments Tab */}
           <TabsContent value="payments" className="space-y-6">
-            <h2 className="text-2xl font-bold text-gray-800">Payment Management</h2>
+            <div className="flex justify-between items-center">
+              <h2 className="text-2xl font-bold text-gray-800">Payment Management</h2>
+              <Button onClick={() => setOpenPaymentDialog(true)}>
+                <Plus className="mr-2 h-4 w-4" />
+                Process New Payment
+              </Button>
+            </div>
             
+            {/* Square Integration Info */}
             <Card>
               <CardHeader>
                 <CardTitle>Square Payment Integration</CardTitle>
                 <CardDescription>
-                  Process payments for appointments using Square
+                  Process payments directly or for appointments using Square
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <p>
-                    Use this section to process payments for scheduled appointments.
-                    Payment processing is powered by Square.
-                  </p>
-                  <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4">
-                    <h3 className="font-semibold text-yellow-800">Payment Processing Instructions</h3>
-                    <ul className="list-disc list-inside mt-2 text-yellow-700 space-y-1">
-                      <li>Go to the Appointments tab to see all scheduled appointments</li>
-                      <li>Click "Process Payment" next to any appointment with a "pending" payment status</li>
-                      <li>Enter the payment amount and complete the transaction</li>
-                      <li>The appointment will be automatically updated with payment information</li>
-                    </ul>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h3 className="text-lg font-semibold mb-2">Direct Payment Processing</h3>
+                      <p className="mb-4">
+                        Process one-time payments without creating an appointment:
+                      </p>
+                      <ul className="list-disc list-inside mt-2 text-gray-700 space-y-1">
+                        <li>Click "Process New Payment" button</li>
+                        <li>Enter customer information and payment amount</li>
+                        <li>Complete the transaction</li>
+                        <li>A payment record will be created</li>
+                      </ul>
+                      <Button 
+                        className="mt-4" 
+                        variant="outline" 
+                        onClick={() => setOpenPaymentDialog(true)}
+                      >
+                        Process New Payment
+                      </Button>
+                    </div>
+                    <div className="border-t md:border-t-0 md:border-l border-gray-200 md:pl-6 pt-6 md:pt-0">
+                      <h3 className="text-lg font-semibold mb-2">Appointment-Based Payments</h3>
+                      <p className="mb-4">
+                        Process payments for scheduled appointments:
+                      </p>
+                      <ul className="list-disc list-inside mt-2 text-gray-700 space-y-1">
+                        <li>Go to the Appointments tab</li>
+                        <li>Click "Process Payment" next to any appointment with a "pending" payment status</li>
+                        <li>Enter the payment amount and complete the transaction</li>
+                        <li>The appointment will be automatically updated with payment information</li>
+                      </ul>
+                      <Button 
+                        className="mt-4" 
+                        variant="outline" 
+                        onClick={() => {
+                          // Switch to appointments tab
+                          document.querySelector('[data-state="inactive"][data-value="appointments"]')?.click();
+                        }}
+                      >
+                        View Appointments
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
+
+            {/* Recent Payments */}
+            <div className="mt-8">
+              <h3 className="text-xl font-semibold mb-4">Recent Payments</h3>
+              <Card>
+                <CardContent className="p-0">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Date</TableHead>
+                        <TableHead>Customer</TableHead>
+                        <TableHead>Amount</TableHead>
+                        <TableHead>Payment Type</TableHead>
+                        <TableHead>Status</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {/* This would typically fetch and display payments from an API */}
+                      <TableRow>
+                        <TableCell className="font-medium">{new Date().toLocaleDateString()}</TableCell>
+                        <TableCell>Direct Payment</TableCell>
+                        <TableCell>$75.00</TableCell>
+                        <TableCell>Square</TableCell>
+                        <TableCell>
+                          <span className="px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">
+                            completed
+                          </span>
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
         </Tabs>
       </main>

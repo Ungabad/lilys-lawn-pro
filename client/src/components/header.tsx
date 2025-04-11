@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -102,19 +102,21 @@ export default function Header() {
             
             {/* Admin button or login link */}
             {isAuthenticated && isAdmin ? (
-              <Link to="/admin">
-                <a className="font-medium text-secondary hover:text-primary transition duration-200 border-l pl-4 ml-2">
-                  <i className="fas fa-user-shield mr-1"></i>
-                  Dashboard
-                </a>
-              </Link>
+              <a
+                href="/admin"
+                className="font-medium text-secondary hover:text-primary transition duration-200 border-l pl-4 ml-2"
+              >
+                <i className="fas fa-user-shield mr-1"></i>
+                Dashboard
+              </a>
             ) : (
-              <Link to="/auth">
-                <a className="font-medium text-secondary hover:text-primary transition duration-200 border-l pl-4 ml-2">
-                  <i className="fas fa-user-lock mr-1"></i>
-                  Admin Login
-                </a>
-              </Link>
+              <a
+                href="/auth"
+                className="font-medium text-secondary hover:text-primary transition duration-200 border-l pl-4 ml-2"
+              >
+                <i className="fas fa-user-lock mr-1"></i>
+                Admin Login
+              </a>
             )}
             
             <a
@@ -167,25 +169,23 @@ export default function Header() {
             
             {/* Admin button or login link - mobile */}
             {isAuthenticated && isAdmin ? (
-              <Link to="/admin">
-                <a 
-                  className="font-medium text-secondary hover:text-primary transition duration-200 border-t border-gray-200 pt-2 mt-1"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <i className="fas fa-user-shield mr-1"></i>
-                  Dashboard
-                </a>
-              </Link>
+              <a 
+                href="/admin"
+                className="font-medium text-secondary hover:text-primary transition duration-200 border-t border-gray-200 pt-2 mt-1"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <i className="fas fa-user-shield mr-1"></i>
+                Dashboard
+              </a>
             ) : (
-              <Link to="/auth">
-                <a 
-                  className="font-medium text-secondary hover:text-primary transition duration-200 border-t border-gray-200 pt-2 mt-1"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <i className="fas fa-user-lock mr-1"></i>
-                  Admin Login
-                </a>
-              </Link>
+              <a 
+                href="/auth"
+                className="font-medium text-secondary hover:text-primary transition duration-200 border-t border-gray-200 pt-2 mt-1"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <i className="fas fa-user-lock mr-1"></i>
+                Admin Login
+              </a>
             )}
             
             <a
