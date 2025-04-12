@@ -19,7 +19,7 @@ document.head.appendChild(title);
 const favicon = document.createElement("link");
 favicon.rel = "icon";
 favicon.href = "images/untitled.png"; // or the path to your favicon
-favicon.type = "image/x-icon";
+favicon.type = "image/png";
 document.head.appendChild(favicon);
 
 // Google Fonts
