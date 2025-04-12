@@ -18,7 +18,7 @@ document.head.appendChild(title);
 // Favicon
 const favicon = document.createElement("link");
 favicon.rel = "icon";
-favicon.href = "/favicon.png"; // or the path to your favicon
+favicon.href = "./favicon.png"; // or the path to your favicon
 favicon.type = "image/png";
 document.head.appendChild(favicon);
 
