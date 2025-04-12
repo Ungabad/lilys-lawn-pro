@@ -30,4 +30,12 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "client/public"),
     emptyOutDir: true,
   },
+  server: {
+    strictPort: true,
+    port: 5000,
+    middlewareMode: "html",
+    proxy: {
+      "/api": "http://localhost:5000",
+    },
+  },
 });
