@@ -52,35 +52,38 @@ export default function ContactSection() {
     },
   });
 
-  const contactMutation = useMutation({
-    mutationFn: async (data: ContactFormValues) => {
-      const res = await apiRequest("POST", "/api/contact", data);
-      const result = await res.json();
-      return result;
-    },
-    onSuccess: () => {
-      toast({
-        title: "Message Sent!",
-        description:
-          "Thank you for your message. We'll get back to you shortly.",
+  const onSubmit = async (data: ContactFormValues) => {
+    try {
+      const response = await fetch("https://formspree.io/f/xkgjygya", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
-      form.reset();
-    },
-    onError: (error) => {
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description:
+            "Thank you for your message. We'll get back to you shortly.",
+        });
+        form.reset(); // Reset the form after successful submission
+      } else {
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
       toast({
         title: "Error",
-        description:
-          error instanceof Error
-            ? error.message
-            : "Failed to send message. Please try again.",
+        description: "An unexpected error occurred. Please try again.",
         variant: "destructive",
       });
-    },
-  });
-
-  // const onSubmit = (data: ContactFormValues) => {
-  //   contactMutation.mutate(data);
-  // };
+    }
+  };
 
   return (
     <section id='contact' className='py-16 bg-light'>
@@ -248,10 +251,8 @@ export default function ContactSection() {
                 <Button
                   type='submit'
                   className='w-full bg-primary text-white py-3 px-6 rounded-md font-medium hover:bg-opacity-90 transition duration-200'
-                  formAction='https://formspree.io/f/xkgjygya'
-                  formMethod='POST'
                 >
-                  {contactMutation.isPending ? "Sending..." : "Send Message"}
+                  Send Message
                 </Button>
               </form>
             </Form>
