@@ -188,13 +188,13 @@ export default function Footer() {
             reserved.
           </p>
           <div className='mt-2 text-xs text-gray-500 flex justify-center flex-wrap gap-4'>
-            <a href='#' className='hover:text-gray-400'>
+            <a href='/privacy-policy' className='hover:text-gray-400'>
               Privacy Policy
             </a>
-            <a href='#' className='hover:text-gray-400'>
+            <a href='/terms-of-service' className='hover:text-gray-400'>
               Terms of Service
             </a>
-            <a href='#' className='hover:text-gray-400'>
+            <a href='/sitemap.xml' className='hover:text-gray-400'>
               Sitemap
             </a>
           </div>
