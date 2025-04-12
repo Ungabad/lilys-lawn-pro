@@ -105,7 +105,7 @@ export default function TestimonialsSection() {
               >
                 <div className='bg-light rounded-lg shadow-md p-6 h-full'>
                   <div className='flex items-center mb-4'>
-                    <div className='text-accent'>
+                    <div className='text-yellow-500'>
                       <i className='fas fa-star'></i>
                       <i className='fas fa-star'></i>
                       <i className='fas fa-star'></i>
