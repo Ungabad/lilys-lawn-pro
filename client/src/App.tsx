@@ -13,11 +13,11 @@ import { ProtectedRoute } from "./lib/protected-route";
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/auth" component={AuthPage} />
-      <Route path="/privacy-policy" component={PrivacyPolicyPage} />
-      <Route path="/terms-of-service" component={TermsOfServicePage} />
-      <ProtectedRoute path="/admin" component={AdminPage} />
+      <Route path='/' component={Home} />
+      <Route path='/auth' component={AuthPage} />
+      <Route path='/privacy-policy' component={PrivacyPolicyPage} />
+      <Route path='/terms-of-service' component={TermsOfServicePage} />
+      <ProtectedRoute path='/admin' component={AdminPage} />
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>
