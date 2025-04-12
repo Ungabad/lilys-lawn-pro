@@ -89,7 +89,7 @@ export default function Header() {
               Contact
             </a>
 
-            {/* Admin button or login link */}
+            {/* Admin button or login link
             {isAuthenticated && isAdmin ? (
               <a
                 href='/admin'
@@ -106,7 +106,7 @@ export default function Header() {
                 <i className='fas fa-user-lock mr-1'></i>
                 Admin Login
               </a>
-            )}
+            )} */}
 
             <a
               href='tel:+15096179194'
