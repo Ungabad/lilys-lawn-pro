@@ -14,7 +14,6 @@ const testimonials = [
   {
     text: "The landscaping project Lily's completed for us completely transformed our yard. They listened to what we wanted and delivered beyond our expectations. Very reasonable prices for the quality of work they provide.",
     name: "Robert L.",
-    location: "Liberty Lake",
     initials: "RL",
   },
   {
@@ -121,9 +120,6 @@ export default function TestimonialsSection() {
                     </div>
                     <div className='ml-3'>
                       <h5 className='font-medium'>{testimonial.name}</h5>
-                      <p className='text-sm text-secondary'>
-                        {testimonial.location}
-                      </p>
                     </div>
                   </div>
                 </div>
