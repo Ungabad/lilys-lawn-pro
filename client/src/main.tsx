@@ -15,13 +15,6 @@ title.textContent =
   "Lily's Lawn & Snow Pro's LLC - Professional Lawn Care and Snow Removal Services";
 document.head.appendChild(title);
 
-// Favicon
-const favicon = document.createElement("link");
-favicon.rel = "icon";
-favicon.href = "./favicon.png"; // or the path to your favicon
-favicon.type = "image/png";
-document.head.appendChild(favicon);
-
 // Google Fonts
 const fontLink = document.createElement("link");
 fontLink.rel = "stylesheet";
