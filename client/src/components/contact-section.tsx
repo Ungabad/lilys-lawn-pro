@@ -78,9 +78,9 @@ export default function ContactSection() {
     },
   });
 
-  const onSubmit = (data: ContactFormValues) => {
-    contactMutation.mutate(data);
-  };
+  // const onSubmit = (data: ContactFormValues) => {
+  //   contactMutation.mutate(data);
+  // };
 
   return (
     <section id='contact' className='py-16 bg-light'>
