@@ -248,7 +248,8 @@ export default function ContactSection() {
                 <Button
                   type='submit'
                   className='w-full bg-primary text-white py-3 px-6 rounded-md font-medium hover:bg-opacity-90 transition duration-200'
-                  disabled={contactMutation.isPending}
+                  formAction='https://formspree.io/f/xkgjygya'
+                  formMethod='POST'
                 >
                   {contactMutation.isPending ? "Sending..." : "Send Message"}
                 </Button>
