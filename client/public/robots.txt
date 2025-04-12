@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /auth
 
-Sitemap: https://lilyslawnandsnowpros.com/sitemap.xml
+Sitemap: https://lilyslawnandsnowpro.com/sitemap.xml
