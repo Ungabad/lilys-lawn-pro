@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Router as WouterRouter } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -13,13 +13,12 @@ import { ProtectedRoute } from "./lib/protected-route";
 function Router() {
   return (
     <Switch>
-      <Route path='/' component={Home} />
-      <Route path='/auth' component={AuthPage} />
-      <Route path='/privacy-policy' component={PrivacyPolicyPage} />
-      <Route path='/terms-of-service' component={TermsOfServicePage} />
-      <ProtectedRoute path='/admin' component={AdminPage} />
-      {/* Fallback to 404 */}
-      <Route component={NotFound} />
+      <Route path="/" component={Home} />
+      <Route path="/auth" component={AuthPage} />
+      <Route path="/privacy-policy" component={PrivacyPolicyPage} />
+      <Route path="/terms-of-service" component={TermsOfServicePage} />
+      <ProtectedRoute path="/admin" component={AdminPage} />
+      <Route path="/:rest*" component={NotFound} />
     </Switch>
   );
 }
@@ -27,7 +26,9 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router />
+      <WouterRouter>
+        <Router />
+      </WouterRouter>
       <Toaster />
     </QueryClientProvider>
   );

@@ -29,6 +29,11 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "client/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
   },
   server: {
     strictPort: true,
@@ -38,4 +43,5 @@ export default defineConfig({
       "/api": "http://localhost:5000",
     },
   },
+  base: "/",
 });
